@@ -18,9 +18,9 @@ if "plan" not in st.session_state:
 
 # Trip creation form
 with st.form("trip_form"):
-    city = st.text_input("✈️ Enter the city you plan to visit:", "Tokyo")
+    city = st.text_input("✈️ Enter the city you plan to visit:")
     days = st.number_input("🗓 Trip duration (in days):", min_value=1, max_value=30, value=3)
-    interests = st.text_input("Your interests (comma separated):", "history, food, culture")
+    interests = st.text_input("Your interests (comma separated):")
 
     submitted = st.form_submit_button("Generate Itinerary")
 
