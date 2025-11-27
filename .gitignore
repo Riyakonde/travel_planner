@@ -1,0 +1,14 @@
+demo.py
+1.py
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+venv/
+env/
+.venv/
+
+.env
+.vscode/

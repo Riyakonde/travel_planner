@@ -1,0 +1,10 @@
+streamlit
+langchain
+langchain-openai
+langchain-community
+langchain-core
+python-dotenv
+requests
+streamlit-mic-recorder
+duckduckgo-search
+ddgs
