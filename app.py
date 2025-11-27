@@ -1,9 +1,26 @@
 import streamlit as st
 from dotenv import load_dotenv
+
+import os
+
+load_dotenv()
+
+st.sidebar.title("🔑 API Keys")
+
+openai_key_input = st.sidebar.text_input(
+    "Enter OpenAI API Key",
+    type="password",
+    placeholder="sk-xxxxxxxx"
+)
+if openai_key_input:
+    os.environ["OPENAI_API_KEY"] = openai_key_input
+if not os.getenv("OPENAI_API_KEY"):
+    st.warning("Please enter your OpenAI API Key in the sidebar to continue.")
+    st.stop()
+
 from agent.travel_agent import plan_trip, modify_itinerary
 from agent.clean import strip_markdown
 
-load_dotenv()
 
 st.title("🧳 Travel Buddy")
 st.write("---")

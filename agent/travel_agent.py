@@ -3,10 +3,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 from langchain_openai import ChatOpenAI
-from langchain_google_genai import ChatGoogleGenerativeAI
+
 from langchain.agents import create_agent
 from agent.tools import city_overview, top_places, food_recommendations, weather
 
@@ -16,11 +15,7 @@ llm=ChatOpenAI(
     api_key=OPENAI_API_KEY
 )
 
-googel_llm=ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
-    temperature=0.4,
-    api_key=GEMINI_API_KEY
-)
+
 
 system_prompt="""
 You are smart travel agent.You are going to help user to plan there travel iternary based on 
@@ -73,20 +68,9 @@ def plan_trip(city:str,days:int,interests:str):
 
     return result["messages"][-1].content
 
-# def modify_iternary(existing_iternary:str,modification_request:str):
-#     """modify an existing travel iternary based on user request"""
-#     result=travel_agent.invoke({
-#         "messages":[
-#             {"role":"system","content":"Modify the existing iternary according to user request.Keep foramt clean and detailed"},
-#             {"role":"user","content":f"Here is the existing iternary:\n{existing_iternary}"},
-#             {"role": "user", "content": f"Please modify it in this way:\n{modification_request}"}
-
-#         ]
-#     }
-
-#      )
+ 
     
-#     return result["messages"][-1].content
+ 
 
 def modify_itinerary(existing_plan: str, request: str):
     """
