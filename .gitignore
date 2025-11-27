@@ -12,3 +12,6 @@ env/
 
 .env
 .vscode/
+
+agent/storage.py
+history.json
