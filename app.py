@@ -5,18 +5,6 @@ import os
 
 load_dotenv()
 
-# st.sidebar.title("🔑 API Keys")
-
-# openai_key_input = st.sidebar.text_input(
-#     "Enter OpenAI API Key",
-#     type="password",
-#     placeholder="sk-xxxxxxxx"
-# )
-# if openai_key_input:
-#     os.environ["OPENAI_API_KEY"] = openai_key_input
-# if not os.getenv("OPENAI_API_KEY"):
-#     st.warning("Please enter your OpenAI API Key in the sidebar to continue.")
-#     st.stop()
 
 from agent.travel_agent import plan_trip, modify_itinerary
 from agent.clean import strip_markdown
@@ -36,7 +24,7 @@ if "plan" not in st.session_state:
 # Trip creation form
 with st.form("trip_form"):
     city = st.text_input("✈️ Enter the city you plan to visit:")
-    days = st.number_input("🗓 Trip duration (in days):", min_value=1, max_value=30, value=3)
+    days = st.number_input("🗓 Trip duration (in days):", min_value=1, max_value=30)
     interests = st.text_input("Your interests (comma separated):")
 
     submitted = st.form_submit_button("Generate Itinerary")
