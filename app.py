@@ -5,18 +5,18 @@ import os
 
 load_dotenv()
 
-st.sidebar.title("🔑 API Keys")
+# st.sidebar.title("🔑 API Keys")
 
-openai_key_input = st.sidebar.text_input(
-    "Enter OpenAI API Key",
-    type="password",
-    placeholder="sk-xxxxxxxx"
-)
-if openai_key_input:
-    os.environ["OPENAI_API_KEY"] = openai_key_input
-if not os.getenv("OPENAI_API_KEY"):
-    st.warning("Please enter your OpenAI API Key in the sidebar to continue.")
-    st.stop()
+# openai_key_input = st.sidebar.text_input(
+#     "Enter OpenAI API Key",
+#     type="password",
+#     placeholder="sk-xxxxxxxx"
+# )
+# if openai_key_input:
+#     os.environ["OPENAI_API_KEY"] = openai_key_input
+# if not os.getenv("OPENAI_API_KEY"):
+#     st.warning("Please enter your OpenAI API Key in the sidebar to continue.")
+#     st.stop()
 
 from agent.travel_agent import plan_trip, modify_itinerary
 from agent.clean import strip_markdown
@@ -48,7 +48,7 @@ with st.form("trip_form"):
             st.session_state["plan"] = result
 
             st.subheader("Your Travel Itinerary:")
-            st.write(result)
+            st.markdown(result)
         except Exception:
             st.error("⚠️ Unable to generate itinerary. Please try again.")
 
